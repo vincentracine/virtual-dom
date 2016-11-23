@@ -20,7 +20,10 @@ function applyProperties(node, props, previous) {
             if (isObject(propValue)) {
                 patchObject(node, props, previous, propName, propValue);
             } else {
-                node[propName] = propValue
+				if(propName == 'innerHTML')
+					node[propName] = propValue;
+				else
+					node.setAttribute(propName, propValue)
             }
         }
     }
